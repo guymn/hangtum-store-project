@@ -12,6 +12,8 @@ export class CreateCategoryComponent {
 
   @Output() addData = new EventEmitter<boolean>();
 
+  errorText: string = '';
+
   categoriesService: CategoryService = inject(CategoryService);
   private categories!: Category[];
 
@@ -27,6 +29,10 @@ export class CreateCategoryComponent {
   }
 
   createCategory(name: string) {
+    if (name == '' || name == null) {
+      this.errorText = 'Category must have name!!!\n'
+      return;
+    }
     this.categoriesService.postCategory(name);
     this.closeModel();
   }
