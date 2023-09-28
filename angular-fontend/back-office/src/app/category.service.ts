@@ -16,7 +16,7 @@ export class CategoryService {
     return res.json();
   }
 
-  postCategory(name: string) {
+  async postCategory(name: string) {
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
 
@@ -30,13 +30,13 @@ export class CategoryService {
       body: raw,
     };
 
-    fetch(this.url, requestOptions)
+    await fetch(this.url, requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log('error', error));
   }
 
-  deleteCategory(id: number) {
+  async deleteCategory(id: number) {
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
 
@@ -45,13 +45,13 @@ export class CategoryService {
       headers: myHeaders,
     };
 
-    fetch(`${this.url}/${id}`, requestOptions)
+    await fetch(`${this.url}/${id}`, requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log('error', error));
   }
 
-  putCategory(id: number, name: string) {
+  async putCategory(id: number, name: string) {
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
 
@@ -65,7 +65,7 @@ export class CategoryService {
       body: raw,
     };
 
-    fetch(`${this.url}/${id}`, requestOptions)
+    await fetch(`${this.url}/${id}`, requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log('error', error));
