@@ -49,15 +49,12 @@
 
 <!-- Modal Edit-->
 <div
-  class="position-absolute top-20 start-50 translate-middle"
+  class="position-absolute top-50 start-50 translate-middle"
   id="exampleModal"
   tabindex="-1"
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
-  [ngClass]="{
-    model: !detail,
-    fade: !detail
-  }"
+  [ngClass]="{ 'model fade d-none': !detail }"
 >
   <div class="modal-dialog">
     <div class="modal-content">

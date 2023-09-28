@@ -8,7 +8,7 @@ import { CategoryService } from '../category.service';
   styleUrls: ['./create-category.component.css'],
 })
 export class CreateCategoryComponent {
-  @Input() model: boolean | undefined;
+  @Input() model: boolean = false;
 
   @Output() addData = new EventEmitter<boolean>();
 

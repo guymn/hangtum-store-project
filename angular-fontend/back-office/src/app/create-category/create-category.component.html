@@ -1,14 +1,11 @@
 <!-- Modal Add-->
 <div
-  class="position-absolute top-20 start-50 translate-middle"
+  class="position-absolute top-50 start-50 translate-middle"
   id="exampleModal"
   tabindex="-1"
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
-  [ngClass]="{
-    model: !model,
-    fade: !model
-  }"
+  [ngClass]="{ 'model fade d-none': !model }"
 >
   <div class="modal-dialog">
     <div class="modal-content">
