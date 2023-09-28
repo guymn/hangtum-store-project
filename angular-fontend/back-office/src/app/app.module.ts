@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { ItemComponent } from './item/item.component';
 import { CreateItemComponent } from './create-item/create-item.component';
+import { EditItemComponent } from './edit-item/edit-item.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { CreateItemComponent } from './create-item/create-item.component';
     CreateCategoryComponent,
     ItemComponent,
     CreateItemComponent,
+    EditItemComponent,
     
   ],
   imports: [HttpClientModule, FormsModule, BrowserModule, AppRoutingModule],

@@ -16,6 +16,21 @@ export class CategoryService {
     return res.json();
   }
 
+  async getCategoryById(id: number) {
+    var myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+    };
+
+    return await fetch(`${this.url}/${id}`, requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log('error', error));
+  }
+
   async postCategory(name: string) {
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');

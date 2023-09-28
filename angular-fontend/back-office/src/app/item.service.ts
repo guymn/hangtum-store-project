@@ -29,7 +29,7 @@ export class ItemService {
       description: description,
       price: price,
       image: image,
-      categoryid: categoryid,
+      categoryID: categoryid,
     });
 
     var requestOptions = {
