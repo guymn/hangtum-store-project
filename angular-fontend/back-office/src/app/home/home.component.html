@@ -3,6 +3,7 @@
   <div class="d-flex flex-sm-row">
     <div
       routerLink="category"
+      (click)="goCategory()"
       class="m-4 pb-2 mb-4 text-success border-success border-5 d-flex flex-row"
       [ngClass]="{
         'border-bottom': category,
@@ -22,6 +23,7 @@
     <!----------------------------------------------------------------------------------------->
     <div
       routerLink="item"
+      (click)="goItem()"
       class="m-4 pb-2 mb-4 text-success border-success border-5 d-flex flex-row"
       [ngClass]="{ 'border-bottom': item, 'text-body-tertiary': !item }"
     >

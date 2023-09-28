@@ -11,5 +11,13 @@ export class HomeComponent {
   category: boolean = true;
   item: boolean = false;
 
+  goCategory() {
+    this.category = true;
+    this.item = false;
+  }
 
+  goItem() {
+    this.category = false;
+    this.item = true;
+  }
 }
