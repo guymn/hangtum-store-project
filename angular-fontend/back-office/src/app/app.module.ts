@@ -8,7 +8,7 @@ import { CategotyComponent } from './categoty/categoty.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateCategoryComponent } from './create-category/create-category.component';
-import { ProductComponent } from './product/product.component';
+import { ItemComponent } from './item/item.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,8 @@ import { ProductComponent } from './product/product.component';
     HomeComponent,
     CategotyComponent,
     CreateCategoryComponent,
-    ProductComponent,
+    ItemComponent,
+    
   ],
   imports: [HttpClientModule, FormsModule, BrowserModule, AppRoutingModule],
   providers: [],
