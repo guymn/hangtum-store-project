@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <a class="navbar-brand" href="#">{{ title }}</a>
+  <a class="navbar-brand" href="">{{ title }}</a>
   <div class="d-flex flex-sm-row">
     <div
+      routerLink="category"
       class="m-4 pb-2 mb-4 text-success border-success border-5 d-flex flex-row"
       [ngClass]="{
         'border-bottom': category,
@@ -20,6 +21,7 @@
     </div>
     <!----------------------------------------------------------------------------------------->
     <div
+      routerLink="item"
       class="m-4 pb-2 mb-4 text-success border-success border-5 d-flex flex-row"
       [ngClass]="{ 'border-bottom': item, 'text-body-tertiary': !item }"
     >
@@ -36,4 +38,4 @@
   </div>
 </nav>
 
-<app-categoty></app-categoty>
+<router-outlet></router-outlet>
