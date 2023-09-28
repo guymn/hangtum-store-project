@@ -14,6 +14,9 @@ export class CategotyComponent {
   inputName: string = '';
   id: number = 0;
 
+  detail: boolean | undefined;
+  addData: boolean | undefined;
+
   constructor() {
     this.categoriesService.getCategories().then((categories) => {
       this.categories = categories;
@@ -31,9 +34,9 @@ export class CategotyComponent {
     console.log(category.id, category.name);
   }
 
-  // createCategory() {
-  //   this.categoriesService.
-  // }
+  addCategory() {
+    this.openAddData();
+  }
 
   updateCategory(name: string) {
     this.categoriesService.putCategory(this.id, name);
@@ -44,12 +47,17 @@ export class CategotyComponent {
     this.closeDetail();
   }
 
-  detail: boolean | undefined;
-
   closeDetail() {
     this.detail = false;
   }
   openDetail() {
     this.detail = true;
+  }
+
+  closeAddData() {
+    this.addData = false;
+  }
+  openAddData() {
+    this.addData = true;
   }
 }

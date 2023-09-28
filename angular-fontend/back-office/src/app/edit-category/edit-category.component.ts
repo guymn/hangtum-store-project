@@ -1,13 +1,13 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
-import { Category } from '../model/category';
 import { CategoryService } from '../category.service';
+import { Category } from '../model/category';
 
 @Component({
-  selector: 'app-create-category',
-  templateUrl: './create-category.component.html',
-  styleUrls: ['./create-category.component.css'],
+  selector: 'app-edit-category',
+  templateUrl: './edit-category.component.html',
+  styleUrls: ['./edit-category.component.css'],
 })
-export class CreateCategoryComponent {
+export class EditCategoryComponent {
   @Input() model: boolean | undefined;
 
   @Output() addData = new EventEmitter<boolean>();
@@ -19,15 +19,5 @@ export class CreateCategoryComponent {
     this.categoriesService.getCategories().then((categories) => {
       this.categories = categories;
     });
-  }
-
-  closeModel() {
-    this.model = false;
-    this.addData.emit(false);
-  }
-
-  createCategory(name: string) {
-    this.categoriesService.postCategory(name);
-    this.closeModel();
   }
 }

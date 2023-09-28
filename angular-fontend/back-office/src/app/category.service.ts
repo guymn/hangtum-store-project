@@ -16,11 +16,13 @@ export class CategoryService {
     return res.json();
   }
 
-  postCategory(category: Category) {
+  postCategory(name: string) {
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
 
-    var raw = JSON.stringify(category);
+    var raw = JSON.stringify({
+      name: name,
+    });
 
     var requestOptions = {
       method: 'POST',

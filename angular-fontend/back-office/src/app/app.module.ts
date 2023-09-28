@@ -8,9 +8,10 @@ import { CategotyComponent } from './categoty/categoty.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateCategoryComponent } from './create-category/create-category.component';
+import { EditCategoryComponent } from './edit-category/edit-category.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, CategotyComponent, CreateCategoryComponent],
+  declarations: [AppComponent, HomeComponent, CategotyComponent, CreateCategoryComponent, EditCategoryComponent],
   imports: [HttpClientModule, FormsModule, BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

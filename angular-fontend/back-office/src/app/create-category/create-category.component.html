@@ -1,1 +1,53 @@
-<p>create-category works!</p>
+<!-- Modal Add-->
+<div
+  class="position-absolute top-20 start-50 translate-middle"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  [ngClass]="{
+    model: !model,
+    fade: !model
+  }"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Create Category</h1>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Category Name :
+            </label>
+            <input
+              #categoryName
+              name="inputName"
+              type="text"
+              class="form-control"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer position-relative">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          (click)="closeModel()"
+        >
+          Close
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="createCategory(categoryName.value)"
+        >
+          Add Category
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
