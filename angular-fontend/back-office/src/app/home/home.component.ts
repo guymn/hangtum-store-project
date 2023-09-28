@@ -8,8 +8,8 @@ import { Component, Input } from '@angular/core';
 export class HomeComponent {
   @Input() title: string | undefined; // decorate the property with @Input()
 
-  category: boolean = true;
-  item: boolean = false;
+  category: boolean | undefined ;
+  item: boolean | undefined ;
 
   goCategory() {
     this.category = true;
