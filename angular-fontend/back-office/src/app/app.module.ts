@@ -5,18 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CategotyComponent } from './categoty/categoty.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { CreateCategoryComponent } from './create-category/create-category.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    CategotyComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  declarations: [AppComponent, HomeComponent, CategotyComponent, CreateCategoryComponent],
+  imports: [HttpClientModule, FormsModule, BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
