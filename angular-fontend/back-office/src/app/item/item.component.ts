@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ItemService } from '../item.service';
 import { Item } from '../model/item';
 import { CategoryService } from '../category.service';
+import { Category } from '../model/category';
 
 @Component({
   selector: 'app-item',
@@ -21,8 +22,8 @@ export class ItemComponent {
     });
   }
 
-  getCategoryColum(id: number) {
-    return this.categoryService.getCategoryById(id);
+  getCategoryColum(categoryID: string) {
+    return this.categoryService.getCategoryById(categoryID);
   }
 
   getItems() {
