@@ -11,24 +11,14 @@ export class CategoryService {
 
   constructor(private httpClient: HttpClient) {}
 
-  async getCategories() {
+  async getCategories(): Promise<Category[]> {
     const res = await fetch(this.url);
     return res.json();
   }
 
-  async getCategoryById(categoryID: string) {
-    var requestOptions = {
-      method: 'GET',
-    };
-
-    let category!: Category;
-    await fetch(`${this.url}/${categoryID}`, requestOptions)
-      .then((response) => response.text())
-      .then((result) => {
-        category = JSON.parse(result);
-      })
-      .catch((error) => console.log('error', error));
-    return category;
+  async getCategoryById(categoryID: string): Promise<Category> {
+    const res = await fetch(`${this.url}/${categoryID}`);
+    return res.json();
   }
 
   async postCategory(name: string) {

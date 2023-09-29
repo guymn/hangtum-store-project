@@ -17,6 +17,7 @@ export class ItemComponent {
   addItem: boolean = false;
   editItem: boolean = false;
 
+  itemToEdit: Item = new Item;
 
   constructor() {
     this.itemService.getItems().then((items) => {
@@ -32,6 +33,10 @@ export class ItemComponent {
     return this.items;
   }
 
+  setItemToEdit(item: Item) {
+    this.itemToEdit = item;
+  }
+
   closeAddItem() {
     this.addItem = false;
   }
@@ -44,7 +49,8 @@ export class ItemComponent {
     this.editItem = false;
   }
 
-  openEditItem() {
+  openEditItem(item: Item) {
+    this.setItemToEdit(item);
     this.editItem = true;
   }
 }

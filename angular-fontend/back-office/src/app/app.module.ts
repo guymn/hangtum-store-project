@@ -21,7 +21,6 @@ import { EditItemComponent } from './edit-item/edit-item.component';
     ItemComponent,
     CreateItemComponent,
     EditItemComponent,
-    
   ],
   imports: [HttpClientModule, FormsModule, BrowserModule, AppRoutingModule],
   providers: [],

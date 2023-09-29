@@ -12,15 +12,15 @@ import { Item } from '../model/item';
 export class EditItemComponent {
   @Input() model: boolean = false;
 
-  @Input() item: Item | undefined;
-
+  @Input()
+  item: Item = new Item();
 
   @Output() editItem = new EventEmitter<boolean>();
 
   itemService: ItemService = inject(ItemService);
 
   categoryService: CategoryService = inject(CategoryService);
-  private categories!: Category[];
+  private categories: Category[] = [];
 
   errorText: string = '';
 
@@ -37,5 +37,10 @@ export class EditItemComponent {
   closeModel() {
     this.model = false;
     this.editItem.emit(false);
+  }
+
+  deleteItem(id: number) {
+    this.itemService.deleteItem(id);
+    this.closeModel();
   }
 }
