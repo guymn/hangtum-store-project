@@ -42,8 +42,8 @@ export class CreateItemComponent {
     image: string,
     categoryid: string
   ) {
-    if (name == '' || name == null) {
-      this.errorText = 'Product must have name!!!\n';
+    if (name == '' || name == null || price == '' || price == null) {
+      this.errorText = 'Product must have name and price!!!\n';
       return;
     }
     this.itemService.postItem(
