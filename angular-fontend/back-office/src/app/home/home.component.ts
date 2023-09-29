@@ -1,42 +1,33 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnDestroy {
+export class HomeComponent {
   @Input() title: string | undefined; // decorate the property with @Input()
 
-  private page: number = 1;
+  expectedRouteItem = 'item';
+  expectedRouteCategory = 'category';
+  isCurrentRouteItem = false;
+  isCurrentRouteCategory = false;
 
-  ngOnDestroy() {
-    localStorage.setItem('page', this.page.toString());
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+    this.click();
   }
 
-  getPageString(): string {
-    return this.page.toString();
+  isItemLink(): boolean {
+    return this.router.url === '/item';
   }
 
-  goCategory() {
-    this.page = 1;
+  isCatrgoryLink(): boolean {
+    return this.router.url === '/category';
   }
 
-  goItem() {
-    this.page = 2;
-  }
-
-  pageCategory() {
-    if (this.page != 1) {
-      return false;
-    }
-    return true;
-  }
-
-  pageItem() {
-    if (this.page != 2) {
-      return false;
-    }
-    return true;
+  click() {
+    const currentUrl = this.router.url;
+    console.log(currentUrl);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { CategoryService } from '../category.service';
 import { Category } from '../model/category';
+import { ReloadService } from '../reload.service';
 
 @Component({
   selector: 'app-categoty',
@@ -8,6 +9,8 @@ import { Category } from '../model/category';
   styleUrls: ['./categoty.component.css'],
 })
 export class CategotyComponent {
+  reloadService: ReloadService = inject(ReloadService);
+
   categoriesService: CategoryService = inject(CategoryService);
   private categories!: Category[];
 
@@ -49,6 +52,7 @@ export class CategotyComponent {
   }
 
   closeDetail() {
+    this.reloadService.reloadPage();
     this.detail = false;
   }
 
@@ -57,6 +61,7 @@ export class CategotyComponent {
   }
 
   closeAddData() {
+    this.reloadService.reloadPage();
     this.addData = false;
   }
 

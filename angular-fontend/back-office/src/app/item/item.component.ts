@@ -3,6 +3,7 @@ import { ItemService } from '../item.service';
 import { Item } from '../model/item';
 import { CategoryService } from '../category.service';
 import { Category } from '../model/category';
+import { ReloadService } from '../reload.service';
 
 @Component({
   selector: 'app-item',
@@ -10,6 +11,7 @@ import { Category } from '../model/category';
   styleUrls: ['./item.component.css'],
 })
 export class ItemComponent {
+  reloadService: ReloadService = inject(ReloadService);
   itemService: ItemService = inject(ItemService);
   categoryService: CategoryService = inject(CategoryService);
   private items!: Item[];
@@ -34,6 +36,7 @@ export class ItemComponent {
   }
 
   closeAddItem() {
+    this.reloadService.reloadPage();
     this.addItem = false;
   }
 
@@ -42,6 +45,7 @@ export class ItemComponent {
   }
 
   closeEditItem() {
+    this.reloadService.reloadPage();
     this.editItem = false;
   }
 

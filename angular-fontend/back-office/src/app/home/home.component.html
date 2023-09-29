@@ -3,17 +3,17 @@
   <div class="d-flex flex-sm-row">
     <div
       routerLink="category"
-      (click)="goCategory()"
+      (click)="click()"
       class="m-4 pb-2 mb-4 text-success border-success border-5 d-flex flex-row"
       [ngClass]="{
-        'border-bottom': pageCategory(),
-        'text-body-tertiary': !pageCategory()
+        'border-bottom': isCatrgoryLink(),
+        'text-body-tertiary': !isCatrgoryLink()
       }"
     >
       <div
         class="align-self-center text-success"
         [ngClass]="{
-          'text-body-tertiary': !pageCategory()
+          'text-body-tertiary': !isCatrgoryLink()
         }"
       >
         <i class="fa fa-tags"></i>
@@ -23,14 +23,17 @@
     <!----------------------------------------------------------------------------------------->
     <div
       routerLink="item"
-      (click)="goItem()"
+      (click)="click()"
       class="m-4 pb-2 mb-4 text-success border-success border-5 d-flex flex-row"
-      [ngClass]="{ 'border-bottom': pageItem(), 'text-body-tertiary': !pageItem() }"
+      [ngClass]="{
+        'border-bottom': isItemLink(),
+        'text-body-tertiary': !isItemLink()
+      }"
     >
       <div
         class="align-self-center text-success"
         [ngClass]="{
-          'text-body-tertiary': !pageItem()
+          'text-body-tertiary': !isItemLink()
         }"
       >
         <span class="glyphicon glyphicon-list-alt"></span>
