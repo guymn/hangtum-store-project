@@ -43,4 +43,32 @@ export class EditItemComponent {
     this.itemService.deleteItem(id);
     this.closeModel();
   }
+
+  updateItem(
+    name: string,
+    description: string,
+    price: string,
+    img: string,
+    categoryID: string
+  ) {
+    this.itemService.putItem(
+      this.item.id,
+      name,
+      description,
+      parseFloat(price),
+      img,
+      categoryID
+    );
+    this.closeModel();
+  }
+
+  sortCategory() {
+    console.log(this.categories);
+    console.log(this.item.categoryID);
+
+    let category = this.categories.find(
+      (category) => category.id == parseInt(this.item.categoryID)
+    );
+    console.log(category);
+  }
 }

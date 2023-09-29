@@ -17,16 +17,12 @@ export class ItemComponent {
   addItem: boolean = false;
   editItem: boolean = false;
 
-  itemToEdit: Item = new Item;
+  itemToEdit: Item = new Item();
 
   constructor() {
     this.itemService.getItems().then((items) => {
       this.items = items;
     });
-  }
-
-  getCategoryColum(categoryID: string) {
-    return this.categoryService.getCategoryById(categoryID);
   }
 
   getItems() {

@@ -65,7 +65,7 @@ export class ItemService {
     description: string,
     price: number,
     image: string,
-    categoryid: string
+    categoryID: string
   ) {
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
@@ -75,7 +75,7 @@ export class ItemService {
       description: description,
       price: price,
       image: image,
-      categoryid: categoryid,
+      categoryID: categoryID,
     });
 
     var requestOptions = {

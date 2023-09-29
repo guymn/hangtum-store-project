@@ -42,6 +42,7 @@
           <div class="p-2 bd-highlight align-self-center">Category :</div>
           <div class="p-2 flex-grow-1 bd-highlight align-self-center">
             <select #itemCategory class="form-control" id="selectCategory">
+              <option value="{{ item.categoryID }}">Defult</option>
               <option
                 *ngFor="let category of getCategoryList()"
                 value="{{ category.id }}"
@@ -107,16 +108,21 @@
         >
           Close
         </button>
-        <button type="button" class="btn btn-primary">Save</button>
-        <!-- (click)="
-            createItem(
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="
+            updateItem(
               itemName.value,
               itemDes.value,
               itemPrice.value,
               'null',
               itemCategory.value
             )
-          " -->
+          "
+        >
+          Save
+        </button>
       </div>
     </div>
   </div>

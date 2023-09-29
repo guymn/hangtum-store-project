@@ -6,14 +6,14 @@
       (click)="goCategory()"
       class="m-4 pb-2 mb-4 text-success border-success border-5 d-flex flex-row"
       [ngClass]="{
-        'border-bottom': category,
-        'text-body-tertiary': !category
+        'border-bottom': pageCategory(),
+        'text-body-tertiary': !pageCategory()
       }"
     >
       <div
         class="align-self-center text-success"
         [ngClass]="{
-          'text-body-tertiary': !category
+          'text-body-tertiary': !pageCategory()
         }"
       >
         <i class="fa fa-tags"></i>
@@ -25,12 +25,12 @@
       routerLink="item"
       (click)="goItem()"
       class="m-4 pb-2 mb-4 text-success border-success border-5 d-flex flex-row"
-      [ngClass]="{ 'border-bottom': item, 'text-body-tertiary': !item }"
+      [ngClass]="{ 'border-bottom': pageItem(), 'text-body-tertiary': !pageItem() }"
     >
       <div
         class="align-self-center text-success"
         [ngClass]="{
-          'text-body-tertiary': !item
+          'text-body-tertiary': !pageItem()
         }"
       >
         <span class="glyphicon glyphicon-list-alt"></span>

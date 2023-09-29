@@ -1,23 +1,42 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnDestroy {
   @Input() title: string | undefined; // decorate the property with @Input()
 
-  category: boolean | undefined ;
-  item: boolean | undefined ;
+  private page: number = 1;
+
+  ngOnDestroy() {
+    localStorage.setItem('page', this.page.toString());
+  }
+
+  getPageString(): string {
+    return this.page.toString();
+  }
 
   goCategory() {
-    this.category = true;
-    this.item = false;
+    this.page = 1;
   }
 
   goItem() {
-    this.category = false;
-    this.item = true;
+    this.page = 2;
+  }
+
+  pageCategory() {
+    if (this.page != 1) {
+      return false;
+    }
+    return true;
+  }
+
+  pageItem() {
+    if (this.page != 2) {
+      return false;
+    }
+    return true;
   }
 }

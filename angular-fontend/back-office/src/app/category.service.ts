@@ -16,9 +16,8 @@ export class CategoryService {
     return res.json();
   }
 
-  async getCategoryById(categoryID: string): Promise<Category> {
-    const res = await fetch(`${this.url}/${categoryID}`);
-    return res.json();
+  getCategoryById(id: string) {
+    console.log(fetch(`${this.url}/${id}`));
   }
 
   async postCategory(name: string) {
