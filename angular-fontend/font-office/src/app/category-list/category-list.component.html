@@ -1,0 +1,35 @@
+<div
+  class="d-flex justify-content-start align-self-center overflow-x-hidden border-bottom position-relative"
+>
+  <div
+    class="m-4 text-center"
+    style="min-width: 100px"
+    *ngFor="let item of category"
+  >
+    <!-- <img
+      class="card-img-top"
+      src="../../assets/Logo.png"
+      alt="Card image cap"
+    />
+    <div class="card-body"></div>
+    <p class="card-text">{{ item }}</p> -->
+  </div>
+  <button
+    class="carousel-control-prev position-absolute top-50 start-0 translate-middle "
+    type="button"
+    (click)="previous()"
+    [disabled]="getCarousel(1)"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    (click)="next()"
+    [disabled]="getCarousel(3)"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

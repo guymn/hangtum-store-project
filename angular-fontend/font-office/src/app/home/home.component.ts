@@ -6,16 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  private carousel: number = 1;
 
-  getCarousel(con: any): boolean {
-    return this.carousel == con;
-  }
-  next() {
-    this.carousel++;
-  }
-
-  previous() {
-    this.carousel--;
-  }
 }
