@@ -11,6 +11,7 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
 import { ItemComponent } from './item/item.component';
 import { CreateItemComponent } from './create-item/create-item.component';
 import { EditItemComponent } from './edit-item/edit-item.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { EditItemComponent } from './edit-item/edit-item.component';
     ItemComponent,
     CreateItemComponent,
     EditItemComponent,
+    ProductComponent,
   ],
   imports: [HttpClientModule, FormsModule, BrowserModule, AppRoutingModule],
   providers: [],

@@ -40,6 +40,26 @@
       </div>
       <div class="align-self-center p-2 flex-grow-1">Manage Item</div>
     </div>
+    <!----------------------------------------------------------------------------------------->
+    <div
+      routerLink="product"
+      (click)="click()"
+      class="m-4 pb-2 mb-4 text-success border-success border-5 d-flex flex-row"
+      [ngClass]="{
+        'border-bottom': isProductLink(),
+        'text-body-tertiary': !isItemLink()
+      }"
+    >
+      <div
+        class="align-self-center text-success"
+        [ngClass]="{
+          'text-body-tertiary': !isProductLink()
+        }"
+      >
+        <span class="glyphicon glyphicon-list-alt"></span>
+      </div>
+      <div class="align-self-center p-2 flex-grow-1">Manage Product</div>
+    </div>
   </div>
 </nav>
 

@@ -11,8 +11,11 @@ export class HomeComponent {
 
   expectedRouteItem = 'item';
   expectedRouteCategory = 'category';
+  expectedRouteProduct= 'product';
+
   isCurrentRouteItem = false;
   isCurrentRouteCategory = false;
+  isCurrentRouteProduct= false;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     this.click();
@@ -24,6 +27,10 @@ export class HomeComponent {
 
   isCatrgoryLink(): boolean {
     return this.router.url === '/category';
+  }
+
+  isProductLink(): boolean {
+    return this.router.url === '/product';
   }
 
   click() {
