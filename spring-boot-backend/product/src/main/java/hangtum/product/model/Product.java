@@ -3,7 +3,7 @@ package hangtum.product.model;
 import jakarta.persistence.*;
 
 @Entity
-public class Item {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -13,18 +13,18 @@ public class Item {
     private double price;
     private String image;
 
-    private String categoryID;
+    private Category category;
 
-    public Item() {
+    public Product() {
     }
 
-    public Item(Long id, String name, String description, double price, String image, String categoryID) {
+    public Product(Long id, String name, String description, double price, String image, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.image = image;
-        this.categoryID = categoryID;
+        this.category = category;
     }
 
     public Long getId() {
@@ -67,12 +67,12 @@ public class Item {
         this.image = image;
     }
 
-    public String getCategoryID() {
-        return categoryID;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryID(String categoryID) {
-        this.categoryID = categoryID;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
 }
