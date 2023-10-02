@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
-import hangtum.product.model.Category;
 import hangtum.product.model.Product;
 
 public interface ProductRepository extends CrudRepository<Product, Long> {
@@ -15,6 +14,6 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
     public boolean existsById(Long id);
 
-    public List<Product> findByCategory(Category category);
+    public List<Product> findByCategoryID(String categoryID);
 
 }

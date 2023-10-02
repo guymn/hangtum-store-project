@@ -12,20 +12,18 @@ public class Product {
     private String description;
     private double price;
     private String image;
-
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    private Category category;
+    private String categoryID;
 
     public Product() {
     }
 
-    public Product(Long id, String name, String description, double price, String image, Category category) {
+    public Product(Long id, String name, String description, double price, String image, String categoryID) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.image = image;
-        this.category = category;
+        this.categoryID = categoryID;
     }
 
     public Long getId() {
@@ -68,12 +66,12 @@ public class Product {
         this.image = image;
     }
 
-    public Category getCategory() {
-        return category;
+    public String getCategoryID() {
+        return categoryID;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryID(String categoryID) {
+        this.categoryID = categoryID;
     }
 
 }

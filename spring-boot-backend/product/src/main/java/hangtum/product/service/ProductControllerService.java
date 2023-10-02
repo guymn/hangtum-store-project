@@ -34,9 +34,8 @@ public class ProductControllerService {
         return optProduct;
     }
 
-    public List<Product> getProductByCategoryID(Long categoryID) {
-        Category category = categotyControllerService.getCategoryById(categoryID).orElse(null);
-        List<Product> products = productRepository.findByCategory(category);
+    public List<Product> getProductByCategoryID(String categoryID) {
+        List<Product> products = productRepository.findByCategoryID(categoryID);
         return products;
     }
 
