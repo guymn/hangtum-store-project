@@ -4,7 +4,7 @@
     <button
       type="button"
       class="btn btn-success mt-4 mb-4"
-      (click)="openAddItem()"
+      (click)="openAddProduct()"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +37,7 @@
       <tr *ngFor="let product of getProducts()">
         <td scope="row">{{ product.id }}</td>
         <td>{{ product.name }}</td>
-        <td>{{ product }}</td>
+        <td>{{ product.categoryID }}</td>
         <td>{{ product.price }}</td>
         <td>
           <!-- (click)="openEditItem(item)" -->
@@ -52,4 +52,7 @@
   [item]="itemToEdit"
   (editItem)="closeEditItem()"
 ></app-edit-item> -->
-<app-create-product [model]="addItem" (addItem)="closeAddItem()"></app-create-product>
+<app-create-product
+  [model]="addProduct"
+  (addProduct)="closeAddProduct()"
+></app-create-product>

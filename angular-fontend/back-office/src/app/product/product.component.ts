@@ -14,20 +14,34 @@ export class ProductComponent {
   productService: ProductService = inject(ProductService);
   categoryService: CategoryService = inject(CategoryService);
   private products!: Product[];
-
+  private categoryInColum: string[] = [];
   addProduct: boolean = false;
   editProduct: boolean = false;
 
   productToEdit: Product = new Product();
 
   constructor() {
-    this.productService.getProducts().then((products) => {
-      this.products = products;
-    });
+    this.setProducts();
   }
 
   getProducts() {
     return this.products;
+  }
+
+  async setProducts() {
+    this.products = await this.productService.getProducts();
+    console.log(this.products);
+  }
+
+  getCategoryInColum() {
+    return this.categoryInColum;
+  }
+  
+  async setCategoryInColum() {
+    this.categoryInColum = this.products.map((item) => {
+      return item.categoryID; // Return the categoryID value
+    });
+    console.log(this.categoryInColum);
   }
 
   // setItemToEdit(item: Item) {
@@ -52,4 +66,9 @@ export class ProductComponent {
   //   this.setItemToEdit(item);
   //   this.editItem = true;
   // }
+
+  async getCategoryByID(categoryID: string) {
+    const tempCategory = await this.categoryService.getCategoryById(categoryID);
+    return tempCategory.name;
+  }
 }

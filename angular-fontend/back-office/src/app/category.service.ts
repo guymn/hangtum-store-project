@@ -16,8 +16,9 @@ export class CategoryService {
     return res.json();
   }
 
-  getCategoryById(id: string) {
-    console.log(fetch(`${this.url}/${id}`));
+  async getCategoryById(id: string) {
+    const res = await fetch(`${this.url}/${id}`);
+    return res.json();
   }
 
   async postCategory(name: string) {

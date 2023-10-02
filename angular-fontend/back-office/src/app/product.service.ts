@@ -1,12 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Product } from './model/product';
 import { Category } from './model/category';
+import { CategoryService } from './category.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
   private url = 'http://localhost:8000/products';
+
+  categoryService: CategoryService = inject(CategoryService);
 
   constructor() {}
 
@@ -26,7 +29,7 @@ export class ProductService {
     description: string,
     price: number,
     image: string,
-    category: Category
+    categoryID: string
   ) {
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
@@ -36,8 +39,10 @@ export class ProductService {
       description: description,
       price: price,
       image: image,
-      category: category,
+      categoryID: categoryID,
     });
+
+    console.log(raw);
 
     var requestOptions = {
       method: 'POST',
