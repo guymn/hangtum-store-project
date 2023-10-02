@@ -13,6 +13,7 @@ public class Product {
     private double price;
     private String image;
 
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Category category;
 
     public Product() {
