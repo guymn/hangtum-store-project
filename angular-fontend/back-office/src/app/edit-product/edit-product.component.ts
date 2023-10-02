@@ -3,6 +3,7 @@ import { Product } from '../model/product';
 import { ProductService } from '../product.service';
 import { CategoryService } from '../category.service';
 import { Category } from '../model/category';
+import { ReloadService } from '../reload.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -19,19 +20,26 @@ export class EditProductComponent {
 
   productService: ProductService = inject(ProductService);
 
+  reloadService: ReloadService = inject(ReloadService);
+
   categoryService: CategoryService = inject(CategoryService);
-  private categories: Category[] = [];
+  categories: Category[] = [];
 
   errorText: string = '';
 
   constructor() {
-    this.categoryService.getCategories().then((categories) => {
-      this.categories = categories;
-    });
+    this.setCategoriesEdit();
   }
 
   getCategories(): Category[] {
     return this.categories;
+  }
+
+  async setCategoriesEdit() {
+    const categories = await this.categoryService.getCategories();
+    this.categories = categories.filter((item) => {
+      item.id != Number(this.product.categoryID);
+    });
   }
 
   closeModel() {
@@ -39,8 +47,33 @@ export class EditProductComponent {
     this.editProduct.emit(false);
   }
 
-  deleteProduct(id: number) {
-    this.productService.deleteProduct(id);
+  deleteProduct() {
+    this.productService.deleteProduct(this.product.id);
+    this.closeModel();
+  }
+
+  updateProduct(
+    name: string,
+    description: string,
+    price: string,
+    image: string,
+    categoryID: string
+  ) {
+    console.log(image);
+    const img = this.reloadService.setImagePath(image);
+
+    if (!this.reloadService.checkUp(name, price, image, categoryID)) {
+      this.errorText = 'Somting Worng!!!\nPlase enter all data';
+      return;
+    }
+    this.productService.putProduct(
+      this.product.id,
+      name,
+      description,
+      parseFloat(price),
+      img,
+      categoryID
+    );
     this.closeModel();
   }
 }

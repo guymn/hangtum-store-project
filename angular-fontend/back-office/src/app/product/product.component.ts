@@ -3,6 +3,8 @@ import { ReloadService } from '../reload.service';
 import { ProductService } from '../product.service';
 import { CategoryService } from '../category.service';
 import { Product } from '../model/product';
+import { ProductTable } from '../model/productTable';
+import { Category } from '../model/category';
 
 @Component({
   selector: 'app-product',
@@ -13,8 +15,11 @@ export class ProductComponent {
   reloadService: ReloadService = inject(ReloadService);
   productService: ProductService = inject(ProductService);
   categoryService: CategoryService = inject(CategoryService);
+
   private products!: Product[];
   private categoryInColum: string[] = [];
+  productTable: ProductTable[] = [];
+
   addProduct: boolean = false;
   editProduct: boolean = false;
 
@@ -24,29 +29,33 @@ export class ProductComponent {
     this.setProducts();
   }
 
+  getProductTable() {
+    return this.productTable;
+  }
+
   getProducts() {
     return this.products;
   }
 
   async setProducts() {
     this.products = await this.productService.getProducts();
-    console.log(this.products);
+    this.setCategoryInColum();
   }
 
   getCategoryInColum() {
     return this.categoryInColum;
   }
-  
+
   async setCategoryInColum() {
-    this.categoryInColum = this.products.map((item) => {
-      return item.categoryID; // Return the categoryID value
-    });
-    console.log(this.categoryInColum);
+    const temp = this.products.map((item) =>
+      this.getCategoryByID(item.categoryID)
+    );
+    this.categoryInColum = await Promise.all(temp);
   }
 
-  // setItemToEdit(item: Item) {
-  //   this.productToEdit = item;
-  // }
+  setProductToEdit(product: Product) {
+    this.productToEdit = product;
+  }
 
   closeAddProduct() {
     this.reloadService.reloadPage();
@@ -57,15 +66,15 @@ export class ProductComponent {
     this.addProduct = true;
   }
 
-  // closeEditItem() {
-  //   this.reloadService.reloadPage();
-  //   this.editItem = false;
-  // }
+  closeEditProduct() {
+    this.reloadService.reloadPage();
+    this.editProduct = false;
+  }
 
-  // openEditItem(item: Item) {
-  //   this.setItemToEdit(item);
-  //   this.editItem = true;
-  // }
+  openEditProduct(product: Product) {
+    this.setProductToEdit(product);
+    this.editProduct = true;
+  }
 
   async getCategoryByID(categoryID: string) {
     const tempCategory = await this.categoryService.getCategoryById(categoryID);

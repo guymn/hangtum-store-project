@@ -40,18 +40,22 @@
         <td>{{ product.categoryID }}</td>
         <td>{{ product.price }}</td>
         <td>
-          <!-- (click)="openEditItem(item)" -->
-          <i class="bi bi-pencil-fill" style="color: brown"></i>
+          <i
+            (click)="openEditProduct(product)"
+            class="bi bi-pencil-fill"
+            style="color: brown"
+          ></i>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-<!-- <app-edit-item
-  [model]="editItem"
-  [item]="itemToEdit"
-  (editItem)="closeEditItem()"
-></app-edit-item> -->
+<app-edit-product
+  [model]="editProduct"
+  [product]="productToEdit"
+  (editProduct)="closeEditProduct()"
+></app-edit-product>
+
 <app-create-product
   [model]="addProduct"
   (addProduct)="closeAddProduct()"

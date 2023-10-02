@@ -35,6 +35,5 @@ export class HomeComponent {
 
   click() {
     const currentUrl = this.router.url;
-    console.log(currentUrl);
   }
 }

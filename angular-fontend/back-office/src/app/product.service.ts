@@ -55,6 +55,38 @@ export class ProductService {
       .then((result) => console.log(result))
       .catch((error) => console.log('error', error));
   }
+  async putProduct(
+    id: number,
+    name: string,
+    description: string,
+    price: number,
+    image: string,
+    categoryID: string
+  ) {
+    var myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+
+    var raw = JSON.stringify({
+      name: name,
+      description: description,
+      price: price,
+      image: image,
+      categoryID: categoryID,
+    });
+
+    console.log(raw);
+
+    var requestOptions = {
+      method: 'PUT',
+      headers: myHeaders,
+      body: raw,
+    };
+
+    fetch(`${this.url}/${id}`, requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log('error', error));
+  }
 
   async deleteProduct(id: number) {
     var myHeaders = new Headers();
