@@ -72,6 +72,6 @@ export class ProductComponent {
 
   async getCategoryByID(categoryID: string) {
     const tempCategory = await this.categoryService.getCategoryById(categoryID);
-    return tempCategory.name;
+    return tempCategory;
   }
 }

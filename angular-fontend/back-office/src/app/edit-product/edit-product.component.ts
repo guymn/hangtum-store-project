@@ -37,9 +37,7 @@ export class EditProductComponent {
 
   async setCategoriesEdit() {
     const categories = await this.categoryService.getCategories();
-    this.categories = categories.filter((item) => {
-      item.id != Number(this.product.categoryID);
-    });
+    this.categories = categories;
   }
 
   closeModel() {
