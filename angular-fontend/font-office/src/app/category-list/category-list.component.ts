@@ -22,16 +22,34 @@ export class CategoryListComponent {
 
   getImageToShow(name: string): string {
     const path = `../../assets/img/Category/${name}.jpg`;
-    console.log(path);
     return path;
   }
 
-  setData() {
-    let category = this.categories.pop();
+  pushData(category: Category | undefined) {
     if (!category) {
       category = new Category();
     }
     this.data.push(category);
+  }
+
+  unshiftData(category: Category | undefined) {
+    if (!category) {
+      category = new Category();
+    }
+    this.data.unshift(category);
+  }
+
+  pushCategory(category: Category | undefined) {
+    if (!category) {
+      category = new Category();
+    }
+    this.categories.push(category);
+  }
+  unshiftCategory(category: Category | undefined) {
+    if (!category) {
+      category = new Category();
+    }
+    this.categories.unshift(category);
   }
 
   getCategorySize() {
@@ -42,22 +60,22 @@ export class CategoryListComponent {
     this.categoryService.getCategories().then((categories) => {
       this.categories = categories;
       for (let i = 0; i < 5; i++) {
-        this.setData();
+        this.pushData(this.categories.pop());
       }
     });
   }
 
   checkClick(): boolean {
-    return this.data.length <= 5;
+    return this.data.length < 5;
   }
 
   next() {
-    console.log(this.categories);
-    console.log(this.data);
+    this.pushCategory(this.data.shift());
+    this.pushData(this.categories.shift());
   }
 
   previous() {
-    console.log(this.categories);
-    console.log(this.data);
+    this.unshiftData(this.categories.pop());
+    this.unshiftCategory(this.data.pop());
   }
 }
