@@ -20,26 +20,7 @@
       </div>
       <div class="align-self-center p-2 flex-grow-1">Manage Category</div>
     </div>
-    <!----------------------------------------------------------------------------------------->
-    <div
-      routerLink="item"
-      (click)="click()"
-      class="m-4 pb-2 mb-4 text-success border-success border-5 d-flex flex-row"
-      [ngClass]="{
-        'border-bottom': isItemLink(),
-        'text-body-tertiary': !isItemLink()
-      }"
-    >
-      <div
-        class="align-self-center text-success"
-        [ngClass]="{
-          'text-body-tertiary': !isItemLink()
-        }"
-      >
-        <span class="glyphicon glyphicon-list-alt"></span>
-      </div>
-      <div class="align-self-center p-2 flex-grow-1">Manage Item</div>
-    </div>
+
     <!----------------------------------------------------------------------------------------->
     <div
       routerLink="product"
@@ -47,7 +28,7 @@
       class="m-4 pb-2 mb-4 text-success border-success border-5 d-flex flex-row"
       [ngClass]="{
         'border-bottom': isProductLink(),
-        'text-body-tertiary': !isItemLink()
+        'text-body-tertiary': !isProductLink()
       }"
     >
       <div

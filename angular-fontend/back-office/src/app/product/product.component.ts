@@ -3,7 +3,6 @@ import { ReloadService } from '../reload.service';
 import { ProductService } from '../product.service';
 import { CategoryService } from '../category.service';
 import { Product } from '../model/product';
-import { ProductTable } from '../model/productTable';
 import { Category } from '../model/category';
 
 @Component({
@@ -18,7 +17,6 @@ export class ProductComponent {
 
   private products!: Product[];
   private categoryInColum: string[] = [];
-  productTable: ProductTable[] = [];
 
   addProduct: boolean = false;
   editProduct: boolean = false;
@@ -27,10 +25,6 @@ export class ProductComponent {
 
   constructor() {
     this.setProducts();
-  }
-
-  getProductTable() {
-    return this.productTable;
   }
 
   getProducts() {

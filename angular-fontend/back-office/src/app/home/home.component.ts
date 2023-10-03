@@ -9,24 +9,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class HomeComponent {
   @Input() title: string | undefined; // decorate the property with @Input()
 
-  expectedRouteItem = 'item';
   expectedRouteCategory = 'category';
-  expectedRouteProduct= 'product';
+  expectedRouteProduct = 'product';
 
-  isCurrentRouteItem = false;
   isCurrentRouteCategory = false;
-  isCurrentRouteProduct= false;
+  isCurrentRouteProduct = false;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     this.click();
   }
 
-  isItemLink(): boolean {
-    return this.router.url === '/item';
-  }
-
   isCatrgoryLink(): boolean {
-    return this.router.url === '/category';
+    return this.router.url === '/category' || this.router.url === '/';
   }
 
   isProductLink(): boolean {
