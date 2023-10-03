@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Category } from '../model/category';
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'app-category-list',
@@ -6,54 +8,56 @@ import { Component } from '@angular/core';
   styleUrls: ['./category-list.component.css'],
 })
 export class CategoryListComponent {
-  private category: string[] = [];
-  private data: string[] = [];
-  private carouselFirst: number = 0;
-  private carouselLast: number = 5;
+  categoryService: CategoryService = inject(CategoryService);
+  private categories: Category[] = [];
+  private data: Category[] = [];
 
   constructor() {
     this.setCategory();
-    this.setData();
   }
 
   getCategoryToShow() {
     return this.data;
   }
 
+  getImageToShow(name: string): string {
+    const path = `../../assets/img/Category/${name}.jpg`;
+    console.log(path);
+    return path;
+  }
+
   setData() {
-    this.data = [];
-    let temp = this.carouselFirst;
-    for (let i = 0; i < 5; i++) {
-      this.data.push(this.category[temp]);
-      temp = (temp + 1) % this.getCategorySize();
+    let category = this.categories.pop();
+    if (!category) {
+      category = new Category();
     }
+    this.data.push(category);
   }
 
   getCategorySize() {
-    return this.category.length;
+    return this.categories.length;
   }
 
-  setCategory() {
-    for (let i = 0; i < 30; i++) {
-      this.category.push('ยาฆ่าหญ้า' + i);
-    }
+  async setCategory() {
+    this.categoryService.getCategories().then((categories) => {
+      this.categories = categories;
+      for (let i = 0; i < 5; i++) {
+        this.setData();
+      }
+    });
+  }
+
+  checkClick(): boolean {
+    return this.data.length <= 5;
   }
 
   next() {
-    this.carouselFirst = (this.carouselFirst + 1) % this.getCategorySize();
-    this.carouselLast = (this.carouselLast + 1) % this.getCategorySize();
-    this.setData();
+    console.log(this.categories);
+    console.log(this.data);
   }
 
   previous() {
-    if (this.carouselFirst == 0) {
-      this.carouselFirst = this.getCategorySize();
-    }
-    if (this.carouselLast == 0) {
-      this.carouselLast = this.getCategorySize();
-    }
-    this.carouselFirst--;
-    this.carouselLast--;
-    this.setData();
+    console.log(this.categories);
+    console.log(this.data);
   }
 }
