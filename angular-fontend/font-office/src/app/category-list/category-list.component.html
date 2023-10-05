@@ -1,33 +1,46 @@
-<div class="border-bottom">
-  <div class="container">
-    <div class="position-relative">
-      <div
-        class="d-flex justify-content-start align-self-center overflow-x-hidden list-category"
-      >
+<div class="d-flex flex-column" style="min-height: 700px">
+  <div><app-recommend></app-recommend></div>
+  <div class="border-bottom mh-100">
+    <div class="container">
+      <div class="position-relative">
         <div
-          class="text-center card-category"
-          *ngFor="let item of getCategoryToShow()"
+          class="d-flex justify-content-start align-self-center overflow-x-hidden list-category"
         >
-          <img
-            class="card-img-top list-category-img border border-success"
-            [src]="getImageToShow(item.name)"
-            alt="Card image cap"
-          />
-          <div class="card-body"></div>
-          <p class="card-text" style="padding-top: 10px">
-            <strong>{{ item.name }}</strong>
-          </p>
+          <div
+            class="text-center card-category"
+            *ngFor="let item of getCategoryToShow()"
+          >
+            <img
+              class="card-img-top list-category-img border border-success"
+              [src]="getImageToShow(item.name)"
+              alt="Card image cap"
+            />
+            <div class="card-body"></div>
+            <p class="card-text" style="padding-top: 10px">
+              <strong>{{ item.name }}</strong>
+            </p>
+          </div>
         </div>
-      </div>
 
-      <button class="carousel-control-prev" type="button" (click)="previous()" [disabled]="checkClick()">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" (click)="next()" [disabled]="checkClick()">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          (click)="previous()"
+          [disabled]="checkClick()"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          (click)="next()"
+          [disabled]="checkClick()"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
   </div>
 </div>
