@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Category } from '../model/category';
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'app-home',
@@ -15,8 +17,14 @@ export class HomeComponent {
   isCurrentRouteCategory = false;
   isCurrentRouteProduct = false;
 
+  categoryService: CategoryService = inject(CategoryService);
+  categories: Category[] = [];
+
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-    this.click();
+    this.categoryService.getCategories().then((result) => {
+      this.categories = result;
+      console.log(this.categories);
+    });
   }
 
   isCatrgoryLink(): boolean {
@@ -25,9 +33,5 @@ export class HomeComponent {
 
   isProductLink(): boolean {
     return this.router.url === '/product';
-  }
-
-  click() {
-    const currentUrl = this.router.url;
   }
 }

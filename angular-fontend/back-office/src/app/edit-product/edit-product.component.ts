@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Product } from '../model/product';
 import { ProductService } from '../product.service';
-import { CategoryService } from '../category.service';
-import { Category } from '../model/category';
 import { ReloadService } from '../reload.service';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-edit-product',
@@ -19,25 +18,31 @@ export class EditProductComponent {
   @Output() editProduct = new EventEmitter<boolean>();
 
   productService: ProductService = inject(ProductService);
-
+  home: HomeComponent = inject(HomeComponent);
   reloadService: ReloadService = inject(ReloadService);
-
-  categoryService: CategoryService = inject(CategoryService);
-  categories: Category[] = [];
-
   errorText: string = '';
 
   constructor() {
-    this.setCategoriesEdit();
+    const categoryData = this.getCategoryById(this.product.categoryID);
+    if (categoryData) {
+      this.home.categories.unshift(categoryData);
+    }
   }
 
-  getCategories(): Category[] {
-    return this.categories;
+  getCategory() {
+    return this.home.categories;
   }
 
-  async setCategoriesEdit() {
-    const categories = await this.categoryService.getCategories();
-    this.categories = categories;
+  getCategoryById(id: string) {
+    const foundCategory = this.home.categories.find(
+      (category) => category.id === Number(id)
+    );
+
+    if (foundCategory) {
+      return foundCategory;
+    } else {
+      return null;
+    }
   }
 
   closeModel() {

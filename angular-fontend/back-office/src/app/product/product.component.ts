@@ -4,6 +4,7 @@ import { ProductService } from '../product.service';
 import { CategoryService } from '../category.service';
 import { Product } from '../model/product';
 import { Category } from '../model/category';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-product',
@@ -13,7 +14,7 @@ import { Category } from '../model/category';
 export class ProductComponent {
   reloadService: ReloadService = inject(ReloadService);
   productService: ProductService = inject(ProductService);
-  categoryService: CategoryService = inject(CategoryService);
+  home: HomeComponent = inject(HomeComponent);
 
   private products!: Product[];
   private categoryInColum: string[] = [];
@@ -27,24 +28,30 @@ export class ProductComponent {
     this.setProducts();
   }
 
+  getCategoryByid(id: string) {
+    const foundCategory = this.home.categories.find(
+      (category) => category.id === Number(id)
+    );
+
+    if (foundCategory) {
+      // Category with the specified ID was found
+      return foundCategory.name;
+    } else {
+      // Category with the specified ID was not found
+      return null;
+    }
+  }
+
   getProducts() {
     return this.products;
   }
 
   async setProducts() {
     this.products = await this.productService.getProducts();
-    this.setCategoryInColum();
   }
 
   getCategoryInColum() {
     return this.categoryInColum;
-  }
-
-  async setCategoryInColum() {
-    const temp = this.products.map((item) =>
-      this.getCategoryByID(item.categoryID)
-    );
-    this.categoryInColum = await Promise.all(temp);
   }
 
   setProductToEdit(product: Product) {
@@ -61,17 +68,12 @@ export class ProductComponent {
   }
 
   closeEditProduct() {
-    this.reloadService.reloadPage();
+    // this.reloadService.reloadPage();
     this.editProduct = false;
   }
 
   openEditProduct(product: Product) {
     this.setProductToEdit(product);
     this.editProduct = true;
-  }
-
-  async getCategoryByID(categoryID: string) {
-    const tempCategory = await this.categoryService.getCategoryById(categoryID);
-    return tempCategory;
   }
 }
