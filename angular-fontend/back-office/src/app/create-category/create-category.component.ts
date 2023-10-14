@@ -28,12 +28,12 @@ export class CreateCategoryComponent {
     this.addData.emit(false);
   }
 
-  createCategory(name: string) {
+  async createCategory(name: string) {
     if (name == '' || name == null) {
       this.errorText = 'Category must have name!!!\n'
       return;
     }
-    this.categoriesService.postCategory(name);
+    await this.categoriesService.postCategory(name);
     this.closeModel();
   }
 }

@@ -21,6 +21,10 @@ export class CategotyComponent {
   addData: boolean = false;
 
   constructor() {
+    this.setCatrgory();
+  }
+
+  setCatrgory() {
     this.categoriesService.getCategories().then((categories) => {
       this.categories = categories;
     });
@@ -41,18 +45,18 @@ export class CategotyComponent {
     this.openAddData();
   }
 
-  updateCategory(name: string) {
-    this.categoriesService.putCategory(this.id, name);
+  async updateCategory(name: string) {
+    await this.categoriesService.putCategory(this.id, name);
     this.closeDetail();
   }
 
-  deleteCategory() {
-    this.categoriesService.deleteCategory(this.id);
+  async deleteCategory() {
+    await this.categoriesService.deleteCategory(this.id);
     this.closeDetail();
   }
 
   closeDetail() {
-    this.reloadService.reloadPage();
+    this.setCatrgory();
     this.detail = false;
   }
 
@@ -61,7 +65,7 @@ export class CategotyComponent {
   }
 
   closeAddData() {
-    this.reloadService.reloadPage();
+    this.setCatrgory();
     this.addData = false;
   }
 

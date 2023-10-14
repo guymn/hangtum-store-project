@@ -45,7 +45,6 @@ export class ProductComponent {
   setProducts() {
     this.productService.getProducts().then((res) => {
       this.products = res;
-      console.log(this.products);
     });
   }
 
