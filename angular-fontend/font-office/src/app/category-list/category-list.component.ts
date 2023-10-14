@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Category } from '../model/category';
 import { CategoryService } from '../category.service';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-category-list',
@@ -11,6 +12,8 @@ export class CategoryListComponent {
   categoryService: CategoryService = inject(CategoryService);
   private categories: Category[] = [];
   private data: Category[] = [];
+
+  home: HomeComponent = inject(HomeComponent);
 
   constructor() {
     this.setCategory();
@@ -77,5 +80,9 @@ export class CategoryListComponent {
   previous() {
     this.unshiftData(this.categories.pop());
     this.unshiftCategory(this.data.pop());
+  }
+
+  goProduct(categoryID: number) {
+    this.home.navigatePage(String(categoryID));
   }
 }

@@ -4,8 +4,11 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { ProductInCategoryComponent } from './product-in-category/product-in-category.component';
 
 const routes: Routes = [
-  { path: '', component: CategoryListComponent },
-  { path: 'category/:product', component: ProductInCategoryComponent },
+  {
+    path: '',
+    component: CategoryListComponent,
+  },
+  { path: ':id', component: ProductInCategoryComponent },
 ];
 
 @NgModule({

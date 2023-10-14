@@ -11,9 +11,10 @@
             *ngFor="let item of getCategoryToShow()"
           >
             <img
-              class="card-img-top list-category-img border border-success"
+              class="card-img-top list-category-img border border-success btn"
               [src]="getImageToShow(item.name)"
               alt="Card image cap"
+              (click)="goProduct(item.id)"
             />
             <div class="card-body"></div>
             <p class="card-text" style="padding-top: 10px">
