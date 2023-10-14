@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { RecommendComponent } from './recommend/recommend.component';
+import { CommonModule } from '@angular/common';
+import { ProductInCategoryComponent } from './product-in-category/product-in-category.component';
 
 @NgModule({
   declarations: [
@@ -14,13 +16,11 @@ import { RecommendComponent } from './recommend/recommend.component';
     HomeComponent,
     FooterComponent,
     CategoryListComponent,
-    RecommendComponent
+    RecommendComponent,
+    ProductInCategoryComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, CommonModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
