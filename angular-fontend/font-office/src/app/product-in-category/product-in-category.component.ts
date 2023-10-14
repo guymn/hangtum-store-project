@@ -40,7 +40,7 @@ export class ProductInCategoryComponent {
   }
 
   getImageToShow(name: string): string {
-    const path = `../../assets/img/Product/${name}.jpg`;
+    const path = `../../assets/img/Product/${name}`;
     return path;
   }
 
