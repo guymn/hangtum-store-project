@@ -1,0 +1,8 @@
+.cartBar {
+  width: 300px;
+  height: fit-content;
+}
+
+.bg-blur {
+  filter: blur(10px);
+}

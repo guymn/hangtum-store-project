@@ -10,6 +10,7 @@ import { Product } from '../model/product';
 export class HomeComponent {
   private bar: string[][] = [];
   private cart: Product[] = [];
+  isCart = true;
 
   constructor(private router: Router) {
     const barData = localStorage.getItem('bar');
@@ -27,6 +28,10 @@ export class HomeComponent {
 
   getBar() {
     return this.bar;
+  }
+
+  getCart() {
+    return this.cart;
   }
 
   pushBar(itemBar: string[]) {
@@ -60,11 +65,36 @@ export class HomeComponent {
   }
 
   openCart() {
+    this.isCart = false;
     console.log(this.cart);
+  }
+
+  closeCart() {
+    this.isCart = true;
+  }
+
+  toBuy() {
+    this.cart = [];
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+    this.closeCart();
+    alert('Susscess to buy');
   }
 
   pushCart(product: Product) {
     this.cart.push(product);
     localStorage.setItem('cart', JSON.stringify(this.cart));
+  }
+
+  deleteItemFormCart(item: Product) {
+    // Find the index of the item to be removed in the cart array
+    const index = this.cart.findIndex((cartItem) => cartItem === item);
+
+    if (index !== -1) {
+      // Use splice to remove the item from the cart array
+      this.cart.splice(index, 1);
+
+      // Save the updated cart array in local storage
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+    }
   }
 }

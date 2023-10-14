@@ -1,61 +1,76 @@
-<div>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-md">
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand"
-        ><img src="../../assets/Logo.png" alt="" style="width: 150px"
-      /></a>
-      <nav class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="container d-flex flex-row">
-          <div *ngFor="let item of getBar()">
-            <div
-              class="btn d-flex flex-row align-items-center"
-              (click)="clickBar(item)"
-            >
-              <label>{{ item[0] }}</label>
-              <label>&nbsp;</label>
+<div [ngClass]="{ 'bg-blur ': !isCart }">
+  <div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-md">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand"
+          ><img src="../../assets/Logo.png" alt="" style="width: 150px"
+        /></a>
+        <nav class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="container d-flex flex-row">
+            <div *ngFor="let item of getBar()">
+              <div
+                class="btn d-flex flex-row align-items-center"
+                (click)="clickBar(item)"
+              >
+                <label>{{ item[0] }}</label>
+                <label>&nbsp;</label>
+              </div>
             </div>
           </div>
-        </div>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="25"
-          height="25"
-          fill="currentColor"
-          class="bi bi-search"
-          viewBox="0 0 16 16"
-          style="margin: 20px"
-        >
-          <path
-            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-          ></path>
-        </svg>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="25"
-          height="25"
-          fill="currentColor"
-          class="bi bi-bag"
-          viewBox="0 0 16 16"
-          (click)="openCart()"
-        >
-          <path
-            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"
-          ></path>
-        </svg>
-      </nav>
-    </div>
-  </nav>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            fill="currentColor"
+            class="bi bi-bag"
+            viewBox="0 0 16 16"
+            (click)="openCart()"
+          >
+            <path
+              d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"
+            ></path>
+          </svg>
+        </nav>
+      </div>
+    </nav>
+  </div>
+
+  <router-outlet></router-outlet>
 </div>
 
-<router-outlet></router-outlet>
+<div
+  class="position-absolute top-0 end-0 cartBar border bg-light position-relative"
+  [ngClass]="{ 'd-none ': isCart }"
+>
+  <label
+    class="position-absolute top-0 end-0 m-2 p-2 btn bg-danger"
+    (click)="closeCart()"
+    >X</label
+  >
+  <div style="margin-top: 40px">&nbsp;</div>
+  <div class="p-2 border m-2" *ngFor="let item of getCart()">
+    <div class="d-flex justify-content-between">
+      <label> {{ item.name }}</label>
+      <label> {{ item.price }} Bath  <a class="btn btn-outline-danger pt-0 pb-0" (click)="deleteItemFormCart(item)">-</a></label>
+    </div>
+  </div>
+  <div style="margin-top: 40px">&nbsp;</div>
+  <button
+    type="button"
+    class="position-absolute bottom-0 start-50 translate-middle-x m-2 p-2 btn btn-primary"
+    (click)="toBuy()"
+  >
+    ซื้อ
+  </button>
+</div>
