@@ -16,7 +16,7 @@ export class ProductComponent {
   productService: ProductService = inject(ProductService);
   home: HomeComponent = inject(HomeComponent);
 
-  private products!: Product[];
+  products!: Product[];
   private categoryInColum: string[] = [];
 
   addProduct: boolean = false;
@@ -38,16 +38,15 @@ export class ProductComponent {
       return foundCategory.name;
     } else {
       // Category with the specified ID was not found
-      return "none";
+      return 'none';
     }
   }
 
-  getProducts() {
-    return this.products;
-  }
-
-  async setProducts() {
-    this.products = await this.productService.getProducts();
+  setProducts() {
+    this.productService.getProducts().then((res) => {
+      this.products = res;
+      console.log(this.products);
+    });
   }
 
   getCategoryInColum() {
@@ -59,7 +58,7 @@ export class ProductComponent {
   }
 
   closeAddProduct() {
-    this.reloadService.reloadPage();
+    this.setProducts();
     this.addProduct = false;
   }
 
@@ -68,7 +67,7 @@ export class ProductComponent {
   }
 
   closeEditProduct() {
-    // this.reloadService.reloadPage();
+    this.setProducts();
     this.editProduct = false;
   }
 

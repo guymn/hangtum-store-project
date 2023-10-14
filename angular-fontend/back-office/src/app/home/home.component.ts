@@ -23,7 +23,6 @@ export class HomeComponent {
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     this.categoryService.getCategories().then((result) => {
       this.categories = result;
-      console.log(this.categories);
     });
   }
 

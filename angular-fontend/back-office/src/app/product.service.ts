@@ -28,6 +28,7 @@ export class ProductService {
     name: string,
     description: string,
     price: number,
+    image: string,
     categoryID: string
   ) {
     var myHeaders = new Headers();
@@ -38,6 +39,7 @@ export class ProductService {
       description: description,
       price: price,
       categoryID: categoryID,
+      image: image,
     });
 
     console.log(raw);
@@ -48,7 +50,7 @@ export class ProductService {
       body: raw,
     };
 
-    fetch(this.url, requestOptions)
+    await fetch(this.url, requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log('error', error));
@@ -58,7 +60,8 @@ export class ProductService {
     name: string,
     description: string,
     price: number,
-    categoryID: string
+    categoryID: string,
+    image: string
   ) {
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
@@ -68,6 +71,7 @@ export class ProductService {
       description: description,
       price: price,
       categoryID: categoryID,
+      image: image,
     });
 
     console.log(raw);
@@ -78,7 +82,7 @@ export class ProductService {
       body: raw,
     };
 
-    fetch(`${this.url}/${id}`, requestOptions)
+    await fetch(`${this.url}/${id}`, requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log('error', error));

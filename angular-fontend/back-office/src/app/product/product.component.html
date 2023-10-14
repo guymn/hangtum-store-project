@@ -34,7 +34,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of getProducts()">
+      <tr *ngFor="let product of products">
         <td scope="row">{{ product.id }}</td>
         <td>{{ product.name }}</td>
         <td>{{ getCategoryByid(product.categoryID) }}</td>

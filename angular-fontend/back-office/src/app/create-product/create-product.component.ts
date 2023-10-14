@@ -38,22 +38,31 @@ export class CreateProductComponent {
     this.addProduct.emit(false);
   }
 
-  createProduct(
+  async createProduct(
     name: string,
     description: string,
     price: string,
+    image: string,
     categoryID: string
   ) {
+    // Split the path by the backslash (\) or forward slash (/) depending on the browser
+    const pathParts = image.split(/[\\\/]/);
+
+    // The last part of the path will be the filename
+    const fileName = pathParts[pathParts.length - 1];
+
+    console.log(fileName); // Outputs: ไกลโฟเซท.jpg
 
     if (!this.reloadService.checkUp(name, price, categoryID)) {
       this.errorText = 'Somting Worng!!!\nPlase enter all data';
       return;
     }
 
-    this.productService.postProduct(
+    await this.productService.postProduct(
       name,
       description,
       parseFloat(price),
+      fileName,
       categoryID
     );
     this.closeModel();

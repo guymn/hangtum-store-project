@@ -12,16 +12,18 @@ public class Product {
     private String description;
     private double price;
     private String categoryID;
+    private String image;
 
     public Product() {
     }
 
-    public Product(Long id, String name, String description, double price, String categoryID) {
+    public Product(Long id, String name, String description, double price, String categoryID, String image) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.categoryID = categoryID;
+        this.image = image;
     }
 
     public Long getId() {
@@ -62,6 +64,14 @@ public class Product {
 
     public void setCategoryID(String categoryID) {
         this.categoryID = categoryID;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
 }

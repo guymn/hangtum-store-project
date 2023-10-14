@@ -58,22 +58,33 @@ export class EditProductComponent {
     this.closeModel();
   }
 
-  updateProduct(
+  async updateProduct(
     name: string,
     description: string,
     price: string,
-    categoryID: string
+    categoryID: string,
+    image: string
   ) {
+    if (image) {
+      const pathParts = image.split(/[\\\/]/);
+      image = pathParts[pathParts.length - 1];
+    } else {
+      image = this.product.image;
+    }
+
+    console.log(image);
+
     if (!this.reloadService.checkUp(name, price, categoryID)) {
       this.errorText = 'Somting Worng!!!\nPlase enter all data';
       return;
     }
-    this.productService.putProduct(
+    await this.productService.putProduct(
       this.product.id,
       name,
       description,
       parseFloat(price),
-      categoryID
+      categoryID,
+      image
     );
     this.closeModel();
   }
