@@ -9,6 +9,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { RecommendComponent } from './recommend/recommend.component';
 import { CommonModule } from '@angular/common';
 import { ProductInCategoryComponent } from './product-in-category/product-in-category.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ProductInCategoryComponent } from './product-in-category/product-in-cat
     CategoryListComponent,
     RecommendComponent,
     ProductInCategoryComponent,
+    CartComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, CommonModule],
   providers: [],

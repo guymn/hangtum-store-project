@@ -43,4 +43,8 @@ export class ProductInCategoryComponent {
     const path = `../../assets/img/Product/${name}.jpg`;
     return path;
   }
+
+  putToCart(item: Product) {
+    this.home.pushCart(item);
+  }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from '../model/product';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HomeComponent {
   private bar: string[][] = [];
+  private cart: Product[] = [];
 
   constructor(private router: Router) {
     const barData = localStorage.getItem('bar');
@@ -16,7 +18,13 @@ export class HomeComponent {
     } else {
       this.pushBar(['หน้าหลัก', '/']);
     }
+
+    const cartData = localStorage.getItem('cart');
+    if (cartData) {
+      this.cart = JSON.parse(cartData);
+    }
   }
+
   getBar() {
     return this.bar;
   }
@@ -30,7 +38,7 @@ export class HomeComponent {
     this.bar.pop();
     localStorage.setItem('bar', JSON.stringify(this.getBar()));
   }
-  
+
   navigatePage(page: string) {
     this.router.navigate([page]);
   }
@@ -49,5 +57,14 @@ export class HomeComponent {
       // Navigate to the selected page
       this.navigatePage(item[1]);
     }
+  }
+
+  openCart() {
+    console.log(this.cart);
+  }
+
+  pushCart(product: Product) {
+    this.cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 }

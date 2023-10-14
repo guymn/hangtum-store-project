@@ -2,8 +2,9 @@
   <div class="card m-4" *ngFor="let item of getProducts()">
     <img class="card-img-top" [src]="getImageToShow(item.name)" />
     <div class="card-body">
-      <h3>{{item.name}}</h3>
-      <label>Price : {{item.price}} Bath</label>
+      <h3>{{ item.name }}</h3>
+      <label>Price : {{ item.price }} Bath</label>
+      <button type="button" class="btn btn-primary mt-3" (click)="putToCart(item)">Put to cart</button>
     </div>
   </div>
 </div>
