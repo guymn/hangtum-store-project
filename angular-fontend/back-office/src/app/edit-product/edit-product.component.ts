@@ -15,6 +15,9 @@ export class EditProductComponent {
   @Input()
   product: Product = new Product();
 
+  @Input()
+  categoryOfProduct!: string;
+
   @Output() editProduct = new EventEmitter<boolean>();
 
   productService: ProductService = inject(ProductService);
@@ -59,13 +62,9 @@ export class EditProductComponent {
     name: string,
     description: string,
     price: string,
-    image: string,
     categoryID: string
   ) {
-    console.log(image);
-    const img = this.reloadService.setImagePath(image);
-
-    if (!this.reloadService.checkUp(name, price, image, categoryID)) {
+    if (!this.reloadService.checkUp(name, price, categoryID)) {
       this.errorText = 'Somting Worng!!!\nPlase enter all data';
       return;
     }
@@ -74,7 +73,6 @@ export class EditProductComponent {
       name,
       description,
       parseFloat(price),
-      img,
       categoryID
     );
     this.closeModel();

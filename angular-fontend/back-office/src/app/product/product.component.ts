@@ -28,7 +28,7 @@ export class ProductComponent {
     this.setProducts();
   }
 
-  getCategoryByid(id: string) {
+  getCategoryByid(id: string): string {
     const foundCategory = this.home.categories.find(
       (category) => category.id === Number(id)
     );
@@ -38,7 +38,7 @@ export class ProductComponent {
       return foundCategory.name;
     } else {
       // Category with the specified ID was not found
-      return null;
+      return "none";
     }
   }
 

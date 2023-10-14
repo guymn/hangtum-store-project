@@ -52,6 +52,7 @@
 </div>
 <app-edit-product
   [model]="editProduct"
+  [categoryOfProduct]="getCategoryByid(productToEdit.categoryID)"
   [product]="productToEdit"
   (editProduct)="closeEditProduct()"
 ></app-edit-product>

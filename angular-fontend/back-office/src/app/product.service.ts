@@ -28,7 +28,6 @@ export class ProductService {
     name: string,
     description: string,
     price: number,
-    image: string,
     categoryID: string
   ) {
     var myHeaders = new Headers();
@@ -38,7 +37,6 @@ export class ProductService {
       name: name,
       description: description,
       price: price,
-      image: image,
       categoryID: categoryID,
     });
 
@@ -60,7 +58,6 @@ export class ProductService {
     name: string,
     description: string,
     price: number,
-    image: string,
     categoryID: string
   ) {
     var myHeaders = new Headers();
@@ -70,7 +67,6 @@ export class ProductService {
       name: name,
       description: description,
       price: price,
-      image: image,
       categoryID: categoryID,
     });
 

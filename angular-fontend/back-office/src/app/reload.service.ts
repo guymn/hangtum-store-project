@@ -16,13 +16,4 @@ export class ReloadService {
     }
     return true;
   }
-
-  setImagePath(img: string) {
-    const startIndex = img.lastIndexOf('\\') + 1; // Find the last backslash
-    const fileName = img.substring(startIndex); // Extract the filename
-    const pathBefore = '../../../../../img/Product/';
-    const path = `${pathBefore}${fileName}`;
-
-    return path;
-  }
 }

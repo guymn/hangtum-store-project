@@ -42,10 +42,12 @@
           <div class="p-2 bd-highlight align-self-center">Category :</div>
           <div class="p-2 flex-grow-1 bd-highlight align-self-center">
             <select #productCategory class="form-control" id="selectCategory">
+              <option value="{{ product.categoryID }}">
+                {{ categoryOfProduct }}
+              </option>
               <option
                 *ngFor="let category of getCategory()"
                 value="{{ category.id }}"
-                id="productCategory"
               >
                 {{ category.name }}
               </option>
@@ -69,13 +71,11 @@
         <div class="form-group p-2 m-0 d-flex flex-row">
           <div class="p-2 bd-highlight">Image :</div>
           <div>
-            <input #productImg type="file" class="form-control-file" />
             <input
-              style="display: none"
-              #productImage
-              type="text"
+              #productImg
+              type="file"
               class="form-control-file"
-              value="{{ product.image }}"
+              accept="image/*"
             />
           </div>
         </div>
@@ -117,7 +117,6 @@
               productName.value,
               productDes.value,
               productPrice.value,
-              productImage.value,
               productCategory.value
             )
           "

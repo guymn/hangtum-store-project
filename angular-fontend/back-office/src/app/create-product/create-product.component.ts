@@ -42,12 +42,10 @@ export class CreateProductComponent {
     name: string,
     description: string,
     price: string,
-    image: string,
     categoryID: string
   ) {
-    const img = this.reloadService.setImagePath(image);
 
-    if (!this.reloadService.checkUp(name, price, image, categoryID)) {
+    if (!this.reloadService.checkUp(name, price, categoryID)) {
       this.errorText = 'Somting Worng!!!\nPlase enter all data';
       return;
     }
@@ -56,7 +54,6 @@ export class CreateProductComponent {
       name,
       description,
       parseFloat(price),
-      img,
       categoryID
     );
     this.closeModel();
