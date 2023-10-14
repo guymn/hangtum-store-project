@@ -48,6 +48,7 @@ export class CategoryListComponent {
     }
     this.categories.push(category);
   }
+
   unshiftCategory(category: Category | undefined) {
     if (!category) {
       category = new Category();
@@ -82,7 +83,8 @@ export class CategoryListComponent {
     this.unshiftCategory(this.data.pop());
   }
 
-  goProduct(categoryID: number) {
-    this.home.navigatePage(String(categoryID));
+  goProduct(item: Category) {
+    this.home.pushBar([item.name, `/${item.id}`]);
+    this.home.navigatePage(String(item.id));
   }
 }

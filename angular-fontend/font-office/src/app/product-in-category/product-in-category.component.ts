@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../model/product';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-product-in-category',
@@ -8,6 +9,7 @@ import { Product } from '../model/product';
   styleUrls: ['./product-in-category.component.css'],
 })
 export class ProductInCategoryComponent implements OnInit {
+  home: HomeComponent = inject(HomeComponent);
   route: ActivatedRoute = inject(ActivatedRoute);
   housingLocationId = -1;
 
@@ -28,7 +30,7 @@ export class ProductInCategoryComponent implements OnInit {
     fetch(this.productUrl + this.housingLocationId, requestOptions)
       .then((response) => response.text())
       .then((result) => {
-        this.product = JSON.parse(result)
+        this.product = JSON.parse(result);
         console.log(this.product);
       })
       .catch((error) => console.log('error', error));
