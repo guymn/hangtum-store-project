@@ -38,8 +38,8 @@ export class ProductService {
       name: name,
       description: description,
       price: price,
-      categoryID: categoryID,
       image: image,
+      categoryID: categoryID,
     });
 
     console.log(raw);
